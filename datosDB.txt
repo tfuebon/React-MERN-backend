@@ -1,0 +1,3 @@
+db_user: mern_user
+db_pass: rGDvp7U3Xqr9zcwE
+db_connection: mongodb+srv://mern_user:rGDvp7U3Xqr9zcwE@calendar-db.9aflz.mongodb.net

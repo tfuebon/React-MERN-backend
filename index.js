@@ -2,6 +2,7 @@ const express = require('express');
 const { dbConnection } = require('./database/config');
 require('dotenv').config();
 const cors = require('cors');
+const path = require('path');
 
 //console.log(process.env)
 
@@ -19,6 +20,9 @@ dbConnection();
 //    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
 //    next();
 //});
+app.use(cors({
+    origin: 'http://localhost:5173'  // Permite solo este origen
+}));
 
 // Directorio publico
 app.use(express.static('public'));
@@ -36,5 +40,9 @@ app.use(express.json())
 
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/events', require('./routes/events'))
+
+app.use('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/index.html'))
+})
 
 app.listen(process.env.PORT, () => console.log(`Servidor corriendo en el puerto ${ process.env.PORT }`));

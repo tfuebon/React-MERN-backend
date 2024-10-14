@@ -135,8 +135,8 @@ const revalidarToken = async(req, res = express.response) => {
         res.json({
             ok: true,
             msg: 'renew',
-            //uid,
-            //name,
+            uid,
+            name,
             token
         })
 
